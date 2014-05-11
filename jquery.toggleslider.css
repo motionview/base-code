@@ -1,0 +1,172 @@
+
+/* Functional styling;
+ * These styles are required for toggleSlider to function.
+ * You don't need to change these rules to apply your design.
+ */
+.toggle-target,
+.toggle-target * {
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-ms-touch-action: none;
+-ms-user-select: none;
+-moz-user-select: none;
+-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.toggle-base {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.toggle-origin {
+	position: absolute;
+	right: 0;
+	top: 0;
+	left: 0;
+	bottom: 0;
+}
+.toggle-handle {
+	position: relative;
+	z-index: 1;
+}
+.toggle-stacking .toggle-handle {
+/* This class is applied to the lower origin when
+   its values is > 50%. */
+	z-index: 10;
+}
+.toggle-stacking + .toggle-origin {
+/* Fix stacking order in IE7, which incorrectly
+   creates a new context for the origins. */
+	*z-index: -1;
+}
+.toggle-state-tap .toggle-origin {
+-webkit-transition: left 0.3s, top 0.3s;
+	transition: left 0.3s, top 0.3s;
+}
+.toggle-state-drag * {
+	cursor: inherit !important;
+}
+
+/* Slider size and handle placement;
+ */
+.toggle-horizontal {
+	height: 18px;
+}
+.toggle-horizontal .toggle-handle {
+	width: 20px;
+	height: 20px;
+	left: -10px;
+	top: -2px;
+}
+.toggle-horizontal.toggle-extended {
+	padding: 0 15px;
+}
+.toggle-horizontal.toggle-extended .toggle-origin  {
+	right: -15px;
+}
+.toggle-vertical {
+	width: 20px;
+}
+.toggle-vertical .toggle-handle {
+	width: 20px;
+	height: 20px;
+	left: -6px;
+	top: -17px;
+}
+.toggle-vertical.toggle-extended {
+	padding: 15px 0;
+}
+.toggle-vertical.toggle-extended .toggle-origin  {
+	bottom: -15px;
+}
+
+/* Styling;
+ */
+.toggle-background {
+	background: #FAFAFA;
+	box-shadow: inset 0 1px 1px #f0f0f0;
+}
+.toggle-connect {
+	background: #3FB8AF;
+	box-shadow: inset 0 0 3px rgba(51,0,0,0);
+-webkit-transition: background 450ms;
+	transition: background 450ms;
+}
+.toggle-origin {
+	border-radius: 2px;
+}
+.toggle-target {
+	border-radius: 4px;
+	border: 1px solid #D3D3D3;
+	box-shadow: inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;
+}
+.toggle-target.toggle-connect {
+	box-shadow: inset 0 0 3px rgba(51,51,51,0.45), 0 3px 6px -5px #BBB;
+}
+
+/* Handles and cursors;
+ */
+.toggle-dragable {
+	cursor: w-resize;
+}
+.toggle-vertical .toggle-dragable {
+	cursor: n-resize;
+}
+.toggle-handle {
+	border: 1px solid #D9D9D9;
+	border-radius: 3px;
+	background: #FFF;
+	cursor: default;
+	box-shadow: inset 0 0 1px #FFF,
+				inset 0 1px 7px #EBEBEB,
+				0 3px 6px -3px #BBB;
+}
+.toggle-active {
+	box-shadow: inset 0 0 1px #FFF,
+				inset 0 1px 7px #DDD,
+				0 3px 6px -3px #BBB;
+}
+
+/* Handle stripes;
+ */
+.toggle-handle:before,
+.toggle-handle:after {
+	content: "";
+	display: block;
+	position: absolute;
+	height: 14px;
+	width: 1px;
+	background: #E8E7E6;
+	left: 14px;
+	top: 6px;
+}
+.toggle-handle:after {
+	left: 17px;
+}
+.toggle-vertical .toggle-handle:before,
+.toggle-vertical .toggle-handle:after {
+	width: 14px;
+	height: 1px;
+	left: 6px;
+	top: 14px;
+}
+.toggle-vertical .toggle-handle:after {
+	top: 17px;
+}
+
+/* Disabled state;
+ */
+[disabled].toggle-connect,
+[disabled] .toggle-connect {
+	background: #B8B8B8;
+}
+[disabled] .toggle-handle {
+	cursor: not-allowed;
+}
+
+/* Blocked state;
+ */
+.toggle-state-blocked.toggle-connect,
+.toggle-state-blocked .toggle-connect {
+	background: #4FDACF;
+}
